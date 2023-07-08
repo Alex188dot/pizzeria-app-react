@@ -24,13 +24,13 @@ const pizzaData = [
   },
   {
     name: "Pizza Funghi",
-    ingredients: "Tomato, mozarella, mushrooms, and onion",
+    ingredients: "Tomato, mozarella, mushrooms, and onions",
     price: 12,
     photoName: "pizzas/funghi.jpg",
     soldOut: false,
   },
   {
-    name: "Pizza Salamino",
+    name: "Pizza Salami",
     ingredients: "Tomato, mozarella, and pepperoni",
     price: 15,
     photoName: "pizzas/salamino.jpg",
@@ -67,32 +67,34 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <div>
+      <ul className="pizzas">
         {pizzaData.map((pizza) => (
           <Pizza
-            name={pizza.name}
-            ingredients={pizza.ingredients}
-            price={pizza.price}
-            photoName={pizza.photoName}
-            soldOut={pizza.soldOut}
-            key={pizza}
+            pizzaObj={pizza}
+            key={pizza.name}
+            // name={pizza.name}
+            // ingredients={pizza.ingredients}
+            // price={pizza.price}
+            // photoName={pizza.photoName}
+            // soldOut={pizza.soldOut}
+            // key={pizza}
           />
         ))}
-      </div>
+      </ul>
     </main>
   );
 }
 
 function Pizza(props) {
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name} />
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -104,8 +106,13 @@ function Footer() {
   console.log(isOpen);
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()} We're currently{" "}
-      {isOpen ? "open" : "closed"}
+      <di className="order">
+        <p>
+          {new Date().toLocaleTimeString()} We're currently{" "}
+          {isOpen ? "open" : "closed"}
+          <button className="btn">Order Now</button>
+        </p>
+      </di>
     </footer>
   );
 }
