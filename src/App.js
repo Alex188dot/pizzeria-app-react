@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+export default App;
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -86,6 +88,9 @@ function Menu() {
 }
 
 function Pizza(props) {
+  if (props.pizzaObj.soldOut) {
+    return null;
+  }
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
@@ -106,15 +111,25 @@ function Footer() {
   console.log(isOpen);
   return (
     <footer className="footer">
-      <di className="order">
+      {isOpen ? (
+        <Order closeHour={closeHour} />
+      ) : (
         <p>
-          {new Date().toLocaleTimeString()} We're currently{" "}
-          {isOpen ? "open" : "closed"}
-          <button className="btn">Order Now</button>
+          Sorry, we're closed. Come back between {openHour}:00 and {closeHour}
+          :00!
         </p>
-      </di>
+      )}
     </footer>
   );
 }
 
-export default App;
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We're open until {props.closeHour}:00. Come visit us or order online!
+      </p>
+      <button className="btn">Order Now</button>
+    </div>
+  );
+}
