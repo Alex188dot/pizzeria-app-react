@@ -1,6 +1,6 @@
 # Pizzeria App built with React
 
-This is a simple React App inspired by Jonas Schmedtmann' Udemy course: The Ultimate React Course 2023: React, Redux & More, that showcases how to use components. It was bootstrapped with create-react-app.
+This is a simple React App inspired by Jonas Schmedtmann' Udemy course: The Ultimate React Course 2023: React, Redux & More, that showcases how to use components. It was bootstrapped with create-react-app. Each pizza is an object of the pizzaData array. For more info see App.js in the src folder.
 
 Final product:
 
